@@ -64,60 +64,7 @@ export default function App() {
           </Routes>}
     </div>
     
-    // <Container className='App-header'>
-    //   <meta name="name" content="Modified Counter App" />
-    //   <h1> AlgoHUB - Lab 3</h1>
-    //   <Row>
-    //     <Col><Button className="btn-wallet"
-    //   onClick={
-    //     isConnectedToPeraWallet ? handleDisconnectWalletClick : handleConnectWalletClick
-    //   }>
-    //   {isConnectedToPeraWallet ? "Disconnect" : "Connect to Pera Wallet"}
-    // </Button></Col>
-    // <Col><Button className="btn-wallet"
-    //   onClick={
-    //     () => optInToApp()
-    //   }>
-    //   Opt-in
-    // </Button></Col>
-    //   </Row>
-        
-        
-    //   <Container>
-    //     <Row>
-    //       <Col><Button className="btn-add-local"
-    //  onClick={
-    //     () => callCounterApplication('Add_Local')
-    //   }>
-    //   Increase
-    // </Button></Col>
-    // <Col>
-    // <h3>Local Count</h3>
-    // <span className='local-counter-text'>{localCount}</span>
-    // </Col>
-    //       <Col><Button className="btn-dec-local" 
-    //  onClick={() => callCounterApplication('Deduct_Local')}>
-    //   Decrease
-    // </Button></Col>
-    //     </Row>
-    //     <Row>
-    //       <Col><Button className="btn-add-global"
-    //  onClick={
-    //     () => callCounterApplication('Add_Global')
-    //   }>
-    //   Increase
-    // </Button></Col>
-    // <Col>
-    // <h3>Global Count</h3>
-    // <span className='counter-text'>{currentCount}</span>
-    // </Col>
-    //       <Col><Button className="btn-dec-global" 
-    //  onClick={() => callCounterApplication('Deduct_Global')}>
-    //   Decrease
-    // </Button></Col>
-    //     </Row>
-    //   </Container>
-    // </Container>
+
   );
 
   function handleConnectWalletClick() {
