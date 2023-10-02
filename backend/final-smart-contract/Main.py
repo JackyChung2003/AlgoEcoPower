@@ -2,7 +2,7 @@
 # This file based on the counter app from the Algorand documentation - https://developer.algorand.org/docs/get-details/dapps/pyteal/#final-product
 from pyteal import *
 
-"""Modified Counter Application"""
+"""AlgoEcoPower Application Smart Contract"""
 
 CURRENCY = Bytes("amount")                  # Local variable to keep track of amount of currency owned by account
 ENERGY = Bytes("energy")                    # Local variable to keep track of energy owned by account
