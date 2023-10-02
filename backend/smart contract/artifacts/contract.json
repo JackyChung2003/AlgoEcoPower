@@ -1,0 +1,120 @@
+{
+  "name": "User Wallet",
+  "methods": [
+    {
+      "name": "initialize_wallet",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "uploadEnergy",
+      "args": [
+        {
+          "type": "uint64",
+          "name": "amount_upload"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "deleteUploadEnergy",
+      "args": [
+        {
+          "type": "uint64",
+          "name": "amount_purchase"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "readEnergyUpload",
+      "args": [],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "set_energy_threshold",
+      "args": [
+        {
+          "type": "uint64",
+          "name": "threshold"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "uploadExceedEnergy",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "decreseEnergyBalanceAmount",
+      "args": [
+        {
+          "type": "uint64",
+          "name": "amount_upload"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "addEnergyUploadAmount",
+      "args": [
+        {
+          "type": "uint64",
+          "name": "amount_upload"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "decreseEnergyBalance",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "getEnergyUpload",
+      "args": [],
+      "returns": {
+        "type": "uint64"
+      }
+    },
+    {
+      "name": "addEnergyUpload",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "decreaseEnergyUpload",
+      "args": [
+        {
+          "type": "uint64",
+          "name": "amount_to_be_deleted"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ],
+  "networks": {}
+}
