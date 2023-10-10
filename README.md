@@ -1,6 +1,6 @@
 # AlgoEcoPower: Renewable Energy Trading and Sustainability Platform
 
-Welcome to the AlgoEcoPower GitHub repository, the codebase for our innovative Renewable Energy Trading and Sustainability Platform. AlgoEcoPower is poised to reshape the way individuals and organizations interact with renewable energy, promote sustainability, and combat climate change. Harnessing the potential of blockchain technology, our platform will create a dynamic ecosystem where users can not only trade energy but also engage in a wide array of renewable energy-related transactions and services.
+Welcome to the AlgoEcoPower GitHub repository, the codebase for our innovative Renewable Energy Trading and Sustainability Platform. AlgoEcoPower is poised to reshape the way individuals and organizations interact with renewable energy, promote sustainability, and combat climate change. Harnessing the potential of blockchain technology, our platform will create a dynamic ecosystem where users can not only trade energy but also engage in a wide array of renewable energy-related transactions and services.   
 
 ## Table of Contents
 - [Introduction](#introduction)
