@@ -78,7 +78,7 @@ a {
   margin: 1rem 0;
   margin-left: 2rem;
 }
-/* Target the images inside the Col components */
+
 #coin {
   max-width: 10%; /* Adjust the maximum width as needed to make the images smaller */
   height: auto%; /* Maintain the aspect ratio */
@@ -220,8 +220,6 @@ a {
 .clickable-text:hover {
   color: #acc2ef; /* New text color on hover */
 }
-
-/* Add any other styles as needed */
 
 .performance-chart {
   background-color: #000033;
