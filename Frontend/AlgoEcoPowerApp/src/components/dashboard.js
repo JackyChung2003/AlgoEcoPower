@@ -472,15 +472,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
                     ) : (
                       <p className='text-center font-mono'>{amountToBeModify *100} {section}</p>
                     )}
-                    {/* <form>
-                      <label>Enter your name:
-                        <input
-                          type="text" 
-                          value={price}
-                          onChange={(e) => setPrice(e.target.value)}
-                        />
-                      </label>
-                    </form> */}
 
                   <Dropdown.Item 
                     className="text-center border border-gray-200 dark:border-gray-700"
