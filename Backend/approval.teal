@@ -1,0 +1,831 @@
+#pragma version 5
+txn ApplicationID
+int 0
+==
+bnz main_l72
+txn OnCompletion
+int OptIn
+==
+bnz main_l71
+txn OnCompletion
+int CloseOut
+==
+bnz main_l70
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l69
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l68
+txn OnCompletion
+int NoOp
+==
+bnz main_l7
+err
+main_l7:
+global GroupSize
+int 1
+==
+assert
+txna ApplicationArgs 0
+byte "Add_Currency_100"
+==
+bnz main_l67
+txna ApplicationArgs 0
+byte "Deduct_Currency_100"
+==
+bnz main_l66
+txna ApplicationArgs 0
+byte "Add_Energy_100"
+==
+bnz main_l65
+txna ApplicationArgs 0
+byte "Deduct_Energy_100"
+==
+bnz main_l64
+txna ApplicationArgs 0
+byte "Add_Energy_Upload_100"
+==
+bnz main_l63
+txna ApplicationArgs 0
+byte "Deduct_Energy_Upload_100"
+==
+bnz main_l62
+txna ApplicationArgs 0
+byte "Add_Energy_Purchase_100"
+==
+bnz main_l61
+txna ApplicationArgs 0
+byte "Deduct_Energy_Purchase_100"
+==
+bnz main_l60
+txna ApplicationArgs 0
+byte "Reset"
+==
+bnz main_l59
+txna ApplicationArgs 0
+byte "Edit_Energy_Upload_Price"
+==
+bnz main_l58
+txna ApplicationArgs 0
+byte "Retrieve_Energy_Upload"
+==
+bnz main_l55
+txna ApplicationArgs 0
+byte "Retrieve_Energy_Upload_All"
+==
+bnz main_l52
+txna ApplicationArgs 0
+byte "Energy_Upload_Purchase_By_Someone"
+==
+bnz main_l49
+txna ApplicationArgs 0
+byte "Modify_Currency_Add"
+==
+bnz main_l48
+txna ApplicationArgs 0
+byte "Modify_Currency_Deduct"
+==
+bnz main_l47
+txna ApplicationArgs 0
+byte "Modify_Energy_Add"
+==
+bnz main_l46
+txna ApplicationArgs 0
+byte "Modify_Energy_Deduct"
+==
+bnz main_l45
+txna ApplicationArgs 0
+byte "Set_Threshold"
+==
+bnz main_l42
+txna ApplicationArgs 0
+byte "Upload_Energy"
+==
+bnz main_l39
+txna ApplicationArgs 0
+byte "Purchase_Energy_Seller_1"
+==
+bnz main_l36
+txna ApplicationArgs 0
+byte "Purchase_Energy_Seller_2"
+==
+bnz main_l33
+txna ApplicationArgs 0
+byte "Purchase_Energy_Seller_3"
+==
+bnz main_l30
+err
+main_l30:
+byte "seller_3_upload_energy"
+app_global_get
+store 8
+txn Sender
+byte "amount"
+app_local_get
+store 0
+byte "energy_purchase"
+app_global_get
+store 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
+txna ApplicationArgs 2
+btoi
+*
+store 9
+load 0
+load 9
+>=
+bnz main_l32
+int 0
+return
+main_l32:
+byte "seller_3_upload_energy"
+load 8
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_global_put
+txn Sender
+byte "amount"
+load 0
+load 9
+-
+app_local_put
+byte "energy_purchase"
+load 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+txn Sender
+byte "energy"
+app_local_get
+store 1
+byte "energy_purchase"
+app_global_get
+store 2
+txn Sender
+byte "energy_balance"
+load 1
+load 2
++
+app_local_put
+int 1
+return
+int 1
+return
+main_l33:
+byte "seller_2_upload_energy"
+app_global_get
+store 8
+txn Sender
+byte "amount"
+app_local_get
+store 0
+byte "energy_purchase"
+app_global_get
+store 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
+txna ApplicationArgs 2
+btoi
+*
+store 9
+load 0
+load 9
+>=
+bnz main_l35
+int 0
+return
+main_l35:
+byte "seller_2_upload_energy"
+load 8
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_global_put
+txn Sender
+byte "amount"
+load 0
+load 9
+-
+app_local_put
+byte "energy_purchase"
+load 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+txn Sender
+byte "energy"
+app_local_get
+store 1
+byte "energy_purchase"
+app_global_get
+store 2
+txn Sender
+byte "energy_balance"
+load 1
+load 2
++
+app_local_put
+int 1
+return
+int 1
+return
+main_l36:
+byte "seller_1_upload_energy"
+app_global_get
+store 8
+txn Sender
+byte "amount"
+app_local_get
+store 0
+byte "energy_purchase"
+app_global_get
+store 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
+txna ApplicationArgs 2
+btoi
+*
+store 9
+load 0
+load 9
+>=
+bnz main_l38
+int 0
+return
+main_l38:
+byte "seller_1_upload_energy"
+load 8
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_global_put
+txn Sender
+byte "amount"
+load 0
+load 9
+-
+app_local_put
+byte "energy_purchase"
+load 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+txn Sender
+byte "energy"
+app_local_get
+store 1
+byte "energy_purchase"
+app_global_get
+store 2
+txn Sender
+byte "energy_balance"
+load 1
+load 2
++
+app_local_put
+int 1
+return
+int 1
+return
+main_l39:
+byte "energy_upload"
+app_global_get
+store 3
+txn Sender
+byte "energy"
+app_local_get
+store 7
+byte "energy_upload_remain"
+app_global_get
+store 5
+load 7
+txna ApplicationArgs 1
+btoi
+int 100
+*
+>=
+bnz main_l41
+int 0
+return
+main_l41:
+byte "energy_upload"
+load 3
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+txn Sender
+byte "energy"
+load 7
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_local_put
+byte "energy_upload_remain"
+load 5
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+byte "energy_upload_price"
+txna ApplicationArgs 2
+btoi
+app_global_put
+int 1
+return
+main_l42:
+byte "energy_upload"
+app_global_get
+store 3
+txn Sender
+byte "energy"
+app_local_get
+store 7
+byte "energy_upload_remain"
+app_global_get
+store 5
+txn Sender
+byte "energy_threshold"
+txna ApplicationArgs 1
+btoi
+app_local_put
+load 7
+txna ApplicationArgs 1
+btoi
+txna ApplicationArgs 2
+btoi
+*
+>
+bnz main_l44
+int 0
+return
+main_l44:
+byte "energy_upload"
+load 3
+load 7
++
+txna ApplicationArgs 1
+btoi
+txna ApplicationArgs 2
+btoi
+*
+-
+app_global_put
+txn Sender
+byte "energy"
+txna ApplicationArgs 1
+btoi
+txna ApplicationArgs 2
+btoi
+*
+app_local_put
+byte "energy_upload_remain"
+load 5
+load 7
++
+txna ApplicationArgs 1
+btoi
+txna ApplicationArgs 2
+btoi
+*
+-
+app_global_put
+int 1
+return
+main_l45:
+txn Sender
+byte "energy"
+app_local_get
+store 7
+txn Sender
+byte "energy"
+load 7
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_local_put
+int 1
+return
+main_l46:
+txn Sender
+byte "energy"
+app_local_get
+store 7
+txn Sender
+byte "energy"
+load 7
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_local_put
+int 1
+return
+main_l47:
+txn Sender
+byte "amount"
+app_local_get
+store 0
+txn Sender
+byte "amount"
+load 0
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_local_put
+int 1
+return
+main_l48:
+txn Sender
+byte "amount"
+app_local_get
+store 0
+txn Sender
+byte "amount"
+load 0
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_local_put
+int 1
+return
+main_l49:
+byte "energy_upload_remain"
+app_global_get
+store 5
+byte "energy_upload_sold"
+app_global_get
+store 4
+txn Sender
+byte "amount"
+app_local_get
+store 0
+load 5
+txna ApplicationArgs 1
+btoi
+int 100
+*
+>=
+bnz main_l51
+int 0
+return
+main_l51:
+byte "energy_upload_remain"
+load 5
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_global_put
+byte "energy_upload_sold"
+load 4
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+txna ApplicationArgs 1
+btoi
+int 100
+*
+txna ApplicationArgs 2
+btoi
+*
+int 472
+*
+store 9
+itxn_begin
+int pay
+itxn_field TypeEnum
+addr ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY
+itxn_field Receiver
+load 9
+itxn_field Amount
+int 1000
+itxn_field Fee
+itxn_submit
+int 1
+return
+main_l52:
+byte "energy_upload"
+app_global_get
+store 3
+byte "energy_purchase"
+app_global_get
+store 2
+byte "energy_upload_remain"
+app_global_get
+store 5
+load 5
+int 0
+>=
+bnz main_l54
+int 0
+return
+main_l54:
+byte "energy_upload"
+int 0
+app_global_put
+byte "energy_upload_remain"
+int 0
+app_global_put
+byte "energy_purchase"
+load 2
+load 5
++
+app_global_put
+int 1
+return
+main_l55:
+byte "energy_upload"
+app_global_get
+store 3
+byte "energy_purchase"
+app_global_get
+store 2
+byte "energy_upload_remain"
+app_global_get
+store 5
+load 5
+txna ApplicationArgs 1
+btoi
+int 100
+*
+>=
+bnz main_l57
+int 0
+return
+main_l57:
+byte "energy_upload_remain"
+load 5
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_global_put
+byte "energy_upload"
+load 3
+txna ApplicationArgs 1
+btoi
+int 100
+*
+-
+app_global_put
+byte "energy_purchase"
+load 2
+txna ApplicationArgs 1
+btoi
+int 100
+*
++
+app_global_put
+int 1
+return
+main_l58:
+byte "energy_upload_price"
+app_global_get
+store 6
+txna ApplicationArgs 1
+btoi
+store 6
+byte "energy_upload_price"
+load 6
+app_global_put
+int 1
+return
+main_l59:
+txn Sender
+byte "amount"
+int 10000
+app_local_put
+txn Sender
+byte "energy"
+int 4000
+app_local_put
+byte "energy_upload"
+int 0
+app_global_put
+byte "energy_upload_price"
+int 1
+app_global_put
+byte "energy_purchase"
+int 0
+app_global_put
+txn Sender
+byte "energy_balance"
+int 0
+app_local_put
+byte "seller_1_upload_energy"
+int 4000
+app_global_put
+byte "seller_2_upload_energy"
+int 8000
+app_global_put
+byte "seller_3_upload_energy"
+int 16000
+app_global_put
+byte "energy_upload_remain"
+int 0
+app_global_put
+byte "energy_upload_sold"
+int 0
+app_global_put
+txn Sender
+byte "energy_threshold"
+int 100
+app_local_put
+int 1
+return
+main_l60:
+byte "energy_purchase"
+app_global_get
+store 10
+byte "energy_purchase"
+load 10
+int 100
+-
+app_global_put
+int 1
+return
+main_l61:
+byte "energy_purchase"
+app_global_get
+store 10
+byte "energy_purchase"
+load 10
+int 100
++
+app_global_put
+int 1
+return
+main_l62:
+byte "energy_upload"
+app_global_get
+store 10
+byte "energy_upload"
+load 10
+int 100
+-
+app_global_put
+int 1
+return
+main_l63:
+byte "energy_upload"
+app_global_get
+store 10
+byte "energy_upload"
+load 10
+int 100
++
+app_global_put
+int 1
+return
+main_l64:
+txn Sender
+byte "energy"
+app_local_get
+store 11
+txn Sender
+byte "energy"
+load 11
+int 100
+-
+app_local_put
+int 1
+return
+main_l65:
+txn Sender
+byte "energy"
+app_local_get
+store 11
+txn Sender
+byte "energy"
+load 11
+int 100
++
+app_local_put
+int 1
+return
+main_l66:
+txn Sender
+byte "amount"
+app_local_get
+store 11
+txn Sender
+byte "amount"
+load 11
+int 100
+-
+app_local_put
+int 1
+return
+main_l67:
+txn Sender
+byte "amount"
+app_local_get
+store 11
+txn Sender
+byte "amount"
+load 11
+int 100
++
+app_local_put
+int 1
+return
+main_l68:
+int 0
+return
+main_l69:
+int 0
+return
+main_l70:
+int 1
+return
+main_l71:
+txn Sender
+byte "amount"
+int 10000
+app_local_put
+txn Sender
+byte "energy"
+int 4000
+app_local_put
+txn Sender
+byte "energy_balance"
+int 0
+app_local_put
+txn Sender
+byte "energy_threshold"
+int 100
+app_local_put
+int 1
+return
+main_l72:
+byte "seller_1_upload_energy"
+int 4000
+app_global_put
+byte "seller_2_upload_energy"
+int 8000
+app_global_put
+byte "seller_3_upload_energy"
+int 16000
+app_global_put
+byte "energy_purchase"
+int 0
+app_global_put
+byte "energy_upload"
+int 0
+app_global_put
+byte "energy_upload_remain"
+int 0
+app_global_put
+byte "energy_upload_sold"
+int 0
+app_global_put
+byte "energy_upload_price"
+int 1
+app_global_put
+int 1
+return

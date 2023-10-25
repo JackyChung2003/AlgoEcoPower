@@ -146,10 +146,10 @@ def update_total_energy():
 # to edit the price of energy upload by user
 def edit_energy_upload_price():
     return Seq([
-        scratchEnergyUploadPrice.store(App.globalGet(ENERGY_UPLOAD_PRICE)),       # Get the energy upload in global storage
+        scratchEnergyUploadPrice.store(App.globalGet(ENERGY_UPLOAD_PRICE)),         # Get the energy upload in global storage
         # modify user input price
         scratchEnergyUploadPrice.store(Btoi(Txn.application_args[1])),
-        App.globalPut(ENERGY_UPLOAD_PRICE, scratchEnergyUploadPrice.load()),  # Update the uploaded energy price in global storage
+        App.globalPut(ENERGY_UPLOAD_PRICE, scratchEnergyUploadPrice.load()),        # Update the uploaded energy price in global storage
         Return(Int(1))
     ])  
 
@@ -157,15 +157,14 @@ def edit_energy_upload_price():
 # to retrive the upload energy back to account(upload energy-> purchase energy)
 def retrieve_energy_upload():
     return Seq([
-        scratchEnergyUploadCount.store(App.globalGet(ENERGY_UPLOAD)),       # Get the energy upload in global storage
-        scratchEnergyPurchased.store(App.globalGet(ENERGY_PURCHASE)),      # Get the energy purchased in global storage
-        scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),      # Get the energy remain in global storage
+        scratchEnergyUploadCount.store(App.globalGet(ENERGY_UPLOAD)),                           # Get the energy upload in global storage
+        scratchEnergyPurchased.store(App.globalGet(ENERGY_PURCHASE)),                           # Get the energy purchased in global storage
+        scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),                   # Get the energy remain in global storage
         # Check if the user has enough energy to upload
         If(scratchEnergyUploadRemain.load() >= (Btoi(Txn.application_args[1]) * Int(100))).Then(
-            App.globalPut(ENERGY_UPLOAD_REMAIN, scratchEnergyUploadRemain.load() - (Btoi(Txn.application_args[1]) * Int(100))),  # Update the uploaded energy in global storage
-            App.globalPut(ENERGY_UPLOAD, scratchEnergyUploadCount.load() - (Btoi(Txn.application_args[1]) * Int(100))),  # Update the uploaded energy in global storage
-            
-            App.globalPut(ENERGY_PURCHASE, scratchEnergyPurchased.load() + (Btoi(Txn.application_args[1]) * Int(100))),  # Update the energy purchase in global storage
+            App.globalPut(ENERGY_UPLOAD_REMAIN, scratchEnergyUploadRemain.load() - (Btoi(Txn.application_args[1]) * Int(100))),     # Update the uploaded energy in global storage
+            App.globalPut(ENERGY_UPLOAD, scratchEnergyUploadCount.load() - (Btoi(Txn.application_args[1]) * Int(100))),             # Update the uploaded energy in global storage
+            App.globalPut(ENERGY_PURCHASE, scratchEnergyPurchased.load() + (Btoi(Txn.application_args[1]) * Int(100))),             # Update the energy purchase in global storage
             Return(Int(1))  # Return success
         ).Else(
             Return(Int(0))  # Return failure
@@ -175,32 +174,19 @@ def retrieve_energy_upload():
 # to retrive the upload energy back to account(upload energy-> purchase energy)
 def retrieve_energy_upload_all():
     return Seq([
-        scratchEnergyUploadCount.store(App.globalGet(ENERGY_UPLOAD)),       # Get the energy upload in global storage
-        scratchEnergyPurchased.store(App.globalGet(ENERGY_PURCHASE)),      # Get the energy purchased in global storage
-        scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),      # Get the energy remain in global storage
+        scratchEnergyUploadCount.store(App.globalGet(ENERGY_UPLOAD)),               # Get the energy upload in global storage
+        scratchEnergyPurchased.store(App.globalGet(ENERGY_PURCHASE)),               # Get the energy purchased in global storage
+        scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),       # Get the energy remain in global storage
         # Check if the user has enough energy to retrieve
         If(scratchEnergyUploadRemain.load() >= Int(0)).Then(
-            App.globalPut(ENERGY_UPLOAD, Int(0)),  # Update the uploaded energy in global storage
-            App.globalPut(ENERGY_UPLOAD_REMAIN, Int(0)),  # Update the uploaded energy in global storage
-            App.globalPut(ENERGY_PURCHASE, scratchEnergyPurchased.load() + scratchEnergyUploadRemain.load()),  # Update the energy purchase in global storage
+            App.globalPut(ENERGY_UPLOAD, Int(0)),                                                               # Update the uploaded energy in global storage
+            App.globalPut(ENERGY_UPLOAD_REMAIN, Int(0)),                                                        # Update the uploaded energy in global storage
+            App.globalPut(ENERGY_PURCHASE, scratchEnergyPurchased.load() + scratchEnergyUploadRemain.load()),   # Update the energy purchase in global storage
             Return(Int(1))  # Return success
         ).Else(
             Return(Int(0))  # Return failure
         )
     ])
-
-# def modify_currency_add():
-#     return Seq([
-#         scratchCurrency.store(App.localGet(Txn.sender(), CURRENCY)),                 # Get the currency in local storage
-
-#         scratchFinalPurchasePrice.store(Btoi(Txn.application_args[1])), 
-#         If(scratchCurrency.load() >= Int(0)).Then(
-#             App.localPut(Txn.sender(), CURRENCY, scratchCurrency.load() + scratchFinalPurchasePrice.load()),  # Update the current energy in local storage
-#             Return(Int(1)),  # Return success
-#         ).Else(
-#             Return(Int(0))  # Return failure
-#         )
-#     ])
 
 def modify_currency_add():
     return Seq([
@@ -262,32 +248,8 @@ def modify_energy_deduct():
 #         Return(Int(1))
 #     ])
 
-# for demo purpose only
-# def energy_upload_purchase_by_someone():
-#     return Seq([
-#         scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),      # Get the energy remain in global storage
-#         scratchEnergyUploadSold.store(App.globalGet(ENERGY_UPLOAD_SOLD)),      # Get the energy remain in global storage
-#         scratchCurrency.store(App.localGet(Txn.sender(), CURRENCY)),                 # Get the currency in local storage
-
-#         If(scratchEnergyUploadRemain.load() >= (Btoi(Txn.application_args[1])*Int(100))).Then(
-#             App.globalPut(ENERGY_UPLOAD_REMAIN, scratchEnergyUploadRemain.load() - (Btoi(Txn.application_args[1])*Int(100))),  # Update the uploaded energy in global storage
-#             App.globalPut(ENERGY_UPLOAD_SOLD, scratchEnergyUploadSold.load() + (Btoi(Txn.application_args[1])*Int(100))),  # Update the uploaded energy in global storage
-
-#             scratchFinalPurchasePrice.store((Btoi(Txn.application_args[1])*Int(100)) * Btoi(Txn.application_args[2])), # final purchase price = energy amount * price per amount
-#             App.localPut(Txn.sender(), CURRENCY, scratchCurrency.load() + scratchFinalPurchasePrice.load()),  # Update the current energy in local storage
-
-#             Return(Int(1))  # Return success
-#         ).Else(
-#             Return(Int(0))  # Return failure
-#         )
-#     ])
-
 def approval_program():
     handle_creation = Seq([
-        # App.globalPut(ENERGY_MARKET, Int(1000)),
-        # App.globalPut(Bytes("seller_1"), Addr(seller_1_address)),
-        # App.globalPut(Bytes("seller_2"), Addr(seller_2_address)),
-        # App.globalPut(Bytes("seller_3"), Addr(seller_3_address)),
         App.globalPut(SELLER_1_ENERGY, Int(4000)),
         App.globalPut(SELLER_2_ENERGY, Int(8000)),
         App.globalPut(SELLER_3_ENERGY, Int(16000)),
@@ -312,18 +274,6 @@ def approval_program():
     handle_deleteapp = Return(Int(0))
     globalCount = ScratchVar(TealType.uint64)
     localCount = ScratchVar(TealType.uint64)
-    sellerCount = ScratchVar(TealType.uint64)
-
-    # # for update total energy user have at the moment
-    # scratchEnergyProduced =  ScratchVar(TealType.uint64)
-    # scratchEnergyPurchased =  ScratchVar(TealType.uint64)
-
-    # Devoloper mode to add energy to the account
-    # add_currency_10 = Seq([
-    #     localCount.store(App.localGet(Txn.sender(), CURRENCY)),
-    #     App.localPut(Txn.sender(), CURRENCY, localCount.load() + Int(10)),
-    #     Return(Int(1))
-    # ])
 
     add_currency_100 = Seq([
         localCount.store(App.localGet(Txn.sender(), CURRENCY)),
@@ -331,38 +281,17 @@ def approval_program():
         Return(Int(1))
     ])
 
-    # Devoloper mode to deduct energy from the account
-    # deduct_currency_10 = Seq([
-    #     localCount.store(App.localGet(Txn.sender(), CURRENCY)),
-    #     App.localPut(Txn.sender(), CURRENCY, localCount.load() - Int(10)),
-    #     Return(Int(1))
-    # ])
-
     deduct_currency_100 = Seq([
         localCount.store(App.localGet(Txn.sender(), CURRENCY)),
         App.localPut(Txn.sender(), CURRENCY, localCount.load() - Int(100)),
         Return(Int(1))
     ])
 
-    # Devoloper mode to add energy to the account
-    # add_energy_10 = Seq([
-    #     localCount.store(App.localGet(Txn.sender(), ENERGY)),
-    #     App.localPut(Txn.sender(), ENERGY, localCount.load() + Int(10)),
-    #     Return(Int(1))
-    # ])
-
     add_energy_100 = Seq([
         localCount.store(App.localGet(Txn.sender(), ENERGY)),
         App.localPut(Txn.sender(), ENERGY, localCount.load() + Int(100)),
         Return(Int(1))
     ])
-
-    # Devoloper mode to deduct energy from the account
-    # deduct_energy_10 = Seq([
-    #     localCount.store(App.localGet(Txn.sender(), ENERGY)),
-    #     App.localPut(Txn.sender(), ENERGY, localCount.load() - Int(10)),
-    #     Return(Int(1))
-    # ])
 
     deduct_energy_100 = Seq([
         localCount.store(App.localGet(Txn.sender(), ENERGY)),
@@ -412,120 +341,30 @@ def approval_program():
     ])
 
     energy_upload_purchase_by_someone = Seq([
-        scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),      # Get the energy remain in global storage
-        scratchEnergyUploadSold.store(App.globalGet(ENERGY_UPLOAD_SOLD)),      # Get the energy remain in global storage
-        scratchCurrency.store(App.localGet(Txn.sender(), CURRENCY)),                 # Get the currency in local storage
+        scratchEnergyUploadRemain.store(App.globalGet(ENERGY_UPLOAD_REMAIN)),       # Get the energy upload remain in global storage
+        scratchEnergyUploadSold.store(App.globalGet(ENERGY_UPLOAD_SOLD)),           # Get the energy upload sold in global storage
+        scratchCurrency.store(App.localGet(Txn.sender(), CURRENCY)),                # Get the currency in local storage
 
         If(scratchEnergyUploadRemain.load() >= (Btoi(Txn.application_args[1])*Int(100))).Then(
-            App.globalPut(ENERGY_UPLOAD_REMAIN, scratchEnergyUploadRemain.load() - (Btoi(Txn.application_args[1])*Int(100))),  # Update the uploaded energy in global storage
-            App.globalPut(ENERGY_UPLOAD_SOLD, scratchEnergyUploadSold.load() + (Btoi(Txn.application_args[1])*Int(100))),  # Update the uploaded energy in global storage
+            App.globalPut(ENERGY_UPLOAD_REMAIN, scratchEnergyUploadRemain.load() - (Btoi(Txn.application_args[1])*Int(100))),       # Update the uploaded energy remain in global storage
+            App.globalPut(ENERGY_UPLOAD_SOLD, scratchEnergyUploadSold.load() + (Btoi(Txn.application_args[1])*Int(100))),           # Update the uploaded energy sold in global storage
 
-            scratchFinalPurchasePrice.store((Btoi(Txn.application_args[1])*Int(100)) * Btoi(Txn.application_args[2]) *Int(472)), # final purchase price = energy amount * price per amount
+            scratchFinalPurchasePrice.store((Btoi(Txn.application_args[1])*Int(100)) * Btoi(Txn.application_args[2]) *Int(472)),    # final purchase price = energy amount * price per amount
             
             InnerTxnBuilder.Begin(), #Begin preparation of a new inner transaction
             InnerTxnBuilder.SetFields({
                 TxnField.type_enum: TxnType.Payment,
-                TxnField.receiver: Addr("ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY"),
+                TxnField.receiver: Addr("ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY"),      # my Pera Wallet address for demostration purpose
                 TxnField.amount: scratchFinalPurchasePrice.load(),
                 TxnField.fee: Int(1000),
             }),
             InnerTxnBuilder.Submit(), 
-            
-            # App.localPut(Txn.sender(), CURRENCY, scratchCurrency.load() + scratchFinalPurchasePrice.load()),  # Update the current energy in local storage
-
 
             Return(Int(1))  # Return success
         ).Else(
             Return(Int(0))  # Return failure
         )   
     ])
-
-    # payment = Seq([
-    #     Assert(fullpay_cond), 
-	# 	InnerTxnBuilder.Begin(),
-	# 	InnerTxnBuilder.SetFields({
-	# 		TxnField.type_enum: TxnType.Payment,
-	# 		TxnField.sender:guest_addr,
-	# 		TxnField.receiver:host_addr,
-	# 		TxnField.amount:App.globalGet(Bytes("total"))
-	# 	}),
-	# 	InnerTxnBuilder.Submit(),
-    #     Return(Int(1))
-    # ])
-
-    # # To upload energy in certain amount only
-    # upload_energy_10 = Seq(
-    #     scratchCount.store(App.globalGet(ENERGY_UPLOAD)),       # Get the energy upload in global storage
-    #     localCount.store(App.localGet(Txn.sender(), ENERGY)),   # Get the energy produced in local storage
-    #     # Check if the user has enough energy to upload
-    #     If(localCount.load() >= Int(10)).Then(
-    #         App.globalPut(ENERGY_UPLOAD, scratchCount.load() + Int(10)),  # Update the current energy in global storage
-    #         App.localPut(Txn.sender(), ENERGY, localCount.load() - Int(10)),  # Update the current energy in local storage
-    #         Return(Int(1))  # Return success
-    #     ).Else(
-    #         Return(Int(0))  # Return failure
-    #     )
-    # )
-
-    # upload_energy_100 = Seq(
-    #     scratchCount.store(App.globalGet(ENERGY_UPLOAD)),       # Get the energy upload in global storage
-    #     localCount.store(App.localGet(Txn.sender(), ENERGY)),   # Get the energy produced in local storage
-    #     # Check if the user has enough energy to upload
-    #     If(localCount.load() >= Int(100)).Then(
-    #         App.globalPut(ENERGY_UPLOAD, scratchCount.load() + Int(100)),  # Update the current energy in global storage
-    #         App.localPut(Txn.sender(), ENERGY, localCount.load() - Int(100)),  # Update the current energy in local storage
-    #         Return(Int(1))  # Return success
-    #     ).Else(
-    #         Return(Int(0))  # Return failure
-    #     )
-    # )
-
-    
-    # # to refresh total energy user have at the moment
-    # update_total_energy = Seq([
-    #     scratchEnergyProduced.store(App.localGet(Txn.sender(),ENERGY)),                 # Get the energy produced in local storage
-    #     scratchEnergyPurchased.store(App.globalGet(ENERGY_PURCHASE)),      # Get the energy purchased in global storage
-    #     App.localPut(Txn.sender(),ENERGY_BALANCE,scratchEnergyProduced.load()+scratchEnergyPurchased.load()), # Update the energy balance in local storage
-    #     Return(Int(1))
-    # ])
-    # purchase_energy_seller_1 = Seq(
-    #     scratchCount.store(App.globalGet(SELLER_1_ENERGY)),       # Get the energy upload in global storage
-    #     localCount.store(App.localGet(Txn.sender(), CURRENCY)),                 # Get the currency in local storage
-    #     # Check if the user has enough money to purchase
-    #     If(localCount.load() >= Btoi(Txn.application_args[1])).Then(
-    #         App.globalPut(SELLER_1_ENERGY, scratchCount.load() - Btoi(Txn.application_args[1])),  # Update the current energy in global storage
-    #         App.localPut(Txn.sender(), CURRENCY, localCount.load() - Btoi(Txn.application_args[1])),  # Update the current energy in local storage
-    #         App.localPut(Txn.sender(), ENERGY, App.localGet(Txn.sender(), ENERGY_PURCHASE) + Btoi(Txn.application_args[1])),  # Update the energy purchase in local storage
-    #         update_total_energy(),
-    #         Return(Int(1))  # Return success
-    #     ).Else(
-    #         Return(Int(0))  # Return failure
-    #     )
-    # )
-
-    # purchase_energy_seller_2 = Seq(
-    #     scratchCount.store(App.globalGet(SELLER_2_ENERGY)),       # Get the energy upload in global storage
-    #     localCount.store(App.localGet(Txn.sender(), CURRENCY)),                 # Get the currency in local storage
-    #     sellerCount.store(App.localGet(Addr(seller_2_address), CURRENCY)),    # Get the currency of seller local storage
-
-    #     # Calculate the payment amount
-    #     # amount = Btoi(Txn.application_args[1]),
-    #     # payment = Btoi(Txn.application_args[2]),
-    #     # Check if the user has enough money to purchase
-    #     If(localCount.load() >= Btoi(Txn.application_args[2])).Then(
-    #         App.globalPut(SELLER_2_ENERGY, scratchCount.load() - Btoi(Txn.application_args[1])),  # Update the current energy in global storage
-    #         App.localPut(Txn.sender(), CURRENCY, localCount.load() - Btoi(Txn.application_args[2])),  # Update the current energy in local storage
-    #         App.localPut(Txn.sender(), ENERGY, App.localGet(Txn.sender(), ENERGY_PURCHASE) + Btoi(Txn.application_args[1])),  # Update the energy purchase in local storage
-    #         update_total_energy,
-    #         # update seller currency
-
-    #         # seller_2_local_currency = App.localGet(Addr(seller_2_address), CURRENCY),
-    #         App.localPut(Addr(seller_2_address), CURRENCY, sellerCount.load() + Btoi(Txn.application_args[2])),
-    #         Return(Int(1)),  # Return success
-    #     ).Else(
-    #         Return(Int(0))  # Return failure
-    #     )
-    # )
 
     handle_noop = Seq(
         Assert(Global.group_size() == Int(1)), 
