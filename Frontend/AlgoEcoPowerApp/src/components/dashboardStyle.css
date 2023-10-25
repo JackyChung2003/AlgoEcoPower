@@ -1,0 +1,462 @@
+/* Reset margin and padding on the body element */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f1c2e;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: "Lucida Console", "Courier New", Monospace;
+}
+
+/* Add this CSS to set the font-family for all elements */
+* {
+  font-family: "Lucida Console", "Courier New", Monospace;
+}
+
+/* Container styles */
+.Container {
+  margin: auto; /* Center the container horizontally */
+  text-align: center; /* Center the content within the container */
+  max-width: 100%; /* Ensure the container is not wider than the viewport */
+  padding: 1rem; /* Add padding to the container */
+}
+
+/* Heading styles */
+#Heading {
+  font-size: 25px; /* Adjust the font size as needed */
+  font-weight: 600; /* Adjust the font weight as needed */
+  margin: 1rem 0; /* Adjust the margins as needed */
+  text-align: left; /* Set text alignment to left */
+  margin-left: 2rem; /* Adjust the right margin as needed */
+  color: #fffffe; /* Set the text color to black */
+}
+
+/* Notification styles */
+#page_success,
+#page_ready {
+  border: 2px solid; /* Set the border styles */
+  color: #b8c1ec;
+  padding: 1rem; /* Adjust the padding as needed */
+  border-radius: 0.75rem; /* Adjust the border radius as needed */
+  margin: 2rem 0; /* Adjust the margins as needed */
+  position: relative; /* Set the position to relative */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Opt-in button styles */
+#optin_button {
+  border-radius: ; /* Create a round button */
+  background-color: #eebbc3; /* Set the button background color to cyan */
+  color: white; /* Set the button text color to white */
+  padding: 0.5rem 1rem; /* Adjust the padding as needed */
+  border: none; /* Remove the border */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Hover effect for the opt-in button */
+#optin_button:hover {
+  background-color: #e08592; /* Change the background color on hover */
+}
+
+/* Additional styles */
+.inline {
+  display: inline-block; /* Display the element as inline-block */
+  margin-right: 1rem; /* Adjust the right margin as needed */
+}
+
+/* Additional global styles */
+a {
+  text-decoration: none; /* Remove underlines from links */
+  color: inherit; /* Inherit text color from parent */
+}
+
+#coin-row-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  margin-left: 2rem;
+}
+/* Target the images inside the Col components */
+#coin {
+  max-width: 10%; /* Adjust the maximum width as needed to make the images smaller */
+  height: auto%; /* Maintain the aspect ratio */
+}
+
+#coin-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: #0f1c2e;
+  margin-left: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+#coin-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  //margin-left: 2rem;
+}
+
+#reload-button {
+  border: none;
+  border-radius: 50%;
+  background-color: #3d5a80; /* Light Pink */
+  color: white;
+  width: 70px;
+  height: 70px;
+  font-size: 15px; /* Slightly larger font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3rem;
+}
+
+#reload-button:hover {
+  background-color: #1f2b3e; /* Darker Pink on hover */
+}
+
+#button-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  background-color: #0d1f2d;
+}
+
+.performance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ccccff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left {
+  text-align: center;
+
+  position: relative;
+}
+
+/* Add this CSS to your stylesheet */
+.upper-right {
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
+
+#border {
+  border-radius: 30px;
+  border: none;
+  background-color: #1f2b3e;
+}
+
+.energy-app {
+  text-align: center;
+}
+
+.congrats h2 {
+  font-size: 96px; /* Adjust the font size as needed */
+  color: #acc2ef; /* Change the color to your preference */
+  margin-bottom: 10px;
+  text-align: left;
+  /* font-family: "Times New Roman", Times, serif; */
+  font-family: "Lucida Console", "Courier New", Monospace;
+}
+
+.congrats p {
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #555; /* Change the color to your preference */
+  margin: 1px 0;
+  text-align: left;
+  font-family: "Lucida Console", "Courier New", Monospace;
+  color: white;
+  margin-left: 2px;
+}
+
+.notenough p {
+  font-size: 24px; /* Adjust the font size as needed */
+  color: #555; /* Change the color to your preference */
+  text-align: left;
+  font-family: "Lucida Console", "Courier New", Monospace;
+  margin-left: 2px;
+}
+
+#additional-options-title {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Lucida Console", "Courier New", Monospace;
+  margin-top: 15px;
+}
+.additional-options p {
+  text-align: left;
+  margin-left: 2px;
+}
+
+/* Define the initial styles for the links */
+.clickable-text {
+  color: #e0e0e0; /* Initial text color */
+  transition: color 0.3s, transform 0.2s; /* Transition animation for color and transform */
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Monaco", "Courier New", Monospace;
+}
+
+/* Define the hover effect styles */
+.clickable-text:hover {
+  color: #acc2ef; /* New text color on hover */
+}
+
+/* Add any other styles as needed */
+
+.performance-chart {
+  background-color: #000033;
+  height: 20px;
+  border-radius: 10px;
+  display: flex;
+  margin-top: 10px;
+}
+
+.week-bar {
+  height: 100%;
+  background-color: #5bc0de;
+  border-radius: 10px;
+}
+
+#battery {
+  max-width: 100%; /* Adjust the maximum width as needed to make the images smaller */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: contain;
+}
+
+#middle-pic {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem; /* Adjust the font size as needed */
+  font-weight: 600; /* Adjust the font weight as needed */
+  color: #fffffe;
+}
+
+#myFooter {
+  position: fixed;
+  bottom: 0;
+  width: 60%;
+  margin-left: 20%;
+}
+
+#Dev-mode {
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  border-left: 1px solid #b8c1ec;
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+
+#reset_Button {
+  background-color: #ffe066;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+#reset_Button:hover {
+  background-color: #ffcc00; /* A slightly darker shade of yellow on hover */
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.upper-section {
+  display: flex;
+  flex: 2; /* Upper section is taller */
+  margin-bottom: 20px; /* Add space between sections */
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.upper-left {
+  flex: 4; /* Left section is wider */
+  background-color: #4d648d;
+  margin-right: 20px;
+}
+
+.upper-right {
+  flex: 3; /* Right section is narrower */
+  background-color: #1f2b3e;
+  color: white;
+}
+.lower-section {
+  display: flex;
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.low-section {
+  flex: 1;
+  display: flex;
+  border: 1px solid gray;
+  margin: 10px;
+  padding: 10px;
+  flex-direction: column; /* Arrange title and content vertically */
+}
+
+.section-title {
+  text-align: left; /* Align the text to the left */
+  font-size: 25px; /* Adjust the font size as needed */
+  font-weight: 700; /* Adjust the font weight as needed */
+  color: #ffffff; /* Adjust the text color as needed */
+  margin-bottom: 5px; /* Add some spacing below the titles */
+  font-family: "Sans-serif", "Arial";
+  margin-left: 15px;
+}
+
+.section-content {
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  margin-left: 20px;
+  height: 100%;
+  color: #ffffff;
+}
+
+.section-title1 {
+  text-align: left; /* Align the text to the left */
+  font-size: 20px; /* Adjust the font size as needed */
+  font-weight: 600; /* Adjust the font weight as needed */
+  color: #ffffff; /* Adjust the text color as needed */
+  margin-bottom: 3px; /* Add some spacing below the titles */
+  font-family: "Sans-serif", "Arial";
+  margin-top: 15px;
+}
+
+.Charging-content {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row; /* Horizontal layout for left and right sections */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.left-section {
+  flex: 1; /* Left section is wider */
+}
+
+.right-section {
+  flex: 2; /* Right section is narrower */
+  display: flex;
+  flex-direction: column; /* Vertical layout for right-section-inner */
+  justify-content: space-between; /* Space items evenly within right-section-inner */
+}
+
+.right-section-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Vertical layout for section titles and content */
+}
+
+.battery-icon {
+  width: 60px;
+  height: 120px;
+  background: #ddd;
+  position: relative;
+  border: 1px solid #999;
+  border-radius: 5px;
+  margin-left: 3rem;
+}
+
+.battery-level {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+.battery-body {
+  position: relative;
+  width: 100%;
+  height: 95%;
+  margin: 3px 0;
+  background: #fff;
+}
+
+.battery-charge {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #4caf50;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: height 0.3s ease-in-out;
+}
+
+/* Styling for section titles */
+.title-bold {
+  font-size: 18px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: #333; /* Adjust the text color as needed */
+  margin-bottom: 5px; /* Add some spacing below the titles */
+}
+
+#button-section-2 {
+  display: flex;
+
+  justify-content: space-between;
+  background-color: #0d1f2d;
+  color: black;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 20px 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+#button-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.styled-button {
+  padding: 10px 20px;
+  background-color: #4a9d9c; /* Dark background color */
+  color: #afffff; /* Light text color */
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.styled-button:hover {
+  background-color: #555; /* Slightly darker background color on hover */
+}

@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #232946;
+}
+
+#page_success,
+#page_ready {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  color: #b8c1ec;
+  padding: 1rem; /* Adjust the padding as needed */
+  border-radius: 0.75rem; /* Adjust the border radius as needed */
+  margin: 10px 0; /* Adjust the margins as needed */
+  position: relative; /* Set the position to relative */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Opt-in button styles */
+#optin_button {
+  border-radius: ; /* Create a round button */
+  background-color: #eebbc3; /* Set the button background color to cyan */
+  color: white; /* Set the button text color to white */
+  padding: 0.5rem 1rem; /* Adjust the padding as needed */
+  border: none; /* Remove the border */
+  cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+/* Hover effect for the opt-in button */
+#optin_button:hover {
+  background-color: #e08592; /* Change the background color on hover */
+}
+
+#coin-row-section {
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 1rem;
+  margin-left: 2rem;
+  shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+#coin-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 0 0;
+  //border: 2px solid; /* Set the border styles */
+}
+
+#coin {
+  max-width: 10%; /* Adjust the maximum width as needed to make the images smaller */
+  height: auto%; /* Maintain the aspect ratio */
+}
+
+#coin-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: #0f1c2e;
+  margin-left: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+#border-outside {
+  margin-bottom: 10px;
+  color: #b8c1ec;
+  background-color: #1f2b3e;
+  padding: 40px;
+  border-radius: 30px;
+  margin: 10px 0; /* Adjust the margins as needed */
+  position: relative; /* Set the position to relative */
+  justify-content: space-between;
+  align-items: center;
+}
+
+#seller {
+  font-size: 18px;
+  color: #b8c1ec;
+  background-color: #0f1c2e;
+  border-radius: 20px;
+  padding: 1rem; /* Adjust the padding as needed */
+}
+
+#seller-name {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+#purchase_section {
+  text-align: center; /* Center the button horizontally */
+  color: #b8c1ec;
+  padding: 1rem; /* Adjust the padding as needed */
+  margin: 10px 0; /* Adjust the margins as needed */
+  position: relative; /* Set the position to relative */
+  align-items: center;
+}
+
+#Purchase_button {
+  background-color: #ccff33;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#Purchase_button:hover {
+  background-color: #1f2b3e; /* Change the background color on hover */
+}
