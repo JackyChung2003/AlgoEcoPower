@@ -2,7 +2,7 @@ import './App.css';
 import {PeraWalletConnect} from '@perawallet/connect';
 import algosdk, { waitForConfirmation } from 'algosdk';
 import { useEffect, useState } from 'react';
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Narbar";
 import Dashboard from "./components/dashboard";
 import Marketplace from "./components/marketplace";
 import Community from "./components/community";
