@@ -287,8 +287,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
             <div className="energy-app">
               <div className="congrats">
                 <h2>Congrats!</h2>
-                {/* <p>Today, you have saved RM {this.state.savingsAmount}</p>
-                <p>Power generated: {this.state.powerGenerated}</p> */}
                 <p>Today, you have saved RM {userCurrencyTokenCount}</p>
                 <p>Power generated: {userEnergyTokenCount + userEnergyUploadCount}W</p>
                 <p>Exceeding 83.3% of the state ranking.</p>
@@ -477,10 +475,8 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
                     className="text-center border border-gray-200 dark:border-gray-700"
                     eventKey={`Modify-${section}`}
                     onClick={() => {
-                      // callCounterApplication('Modify_Currency_Add', (parseInt(amountToBeModify, 10)));
                       if (amountToBeModify >= 0) {
                         if (section === 'Token') {
-                          // callCounterApplication('Modify_Currency_Add', parseInt(amountToBeModify, 10),0);
                           callCounterApplication('Modify_Currency_Add', parseInt(amountToBeModify, 10));
                         } else if (section === 'Energy_Token') {
                           callCounterApplication('Modify_Energy_Add', parseInt(amountToBeModify, 10));
@@ -512,7 +508,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
             )}
           </div>
           
-
           <div className="mb-2">
             {['EnergySold'].map(
               (section) => (
@@ -562,24 +557,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
             }}
           >Reset</Button>
           </div>
-          
-            {/* <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '}
-            <Button variant="secondary">Secondary</Button>{' '} */}
-              {/* <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-              </li>
-              <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6">Licensing</a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">Contact</a>
-              </li> */}
             </ul>
           </div>
         </footer>
@@ -703,7 +680,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
                       </div>
                     ) : null // Add a default value or handle other cases if needed
                   }
-                  {/* Do you want to purchase {currentSeller === 1 ? amountToPurchase1 : currentSeller === 2 ? amountToPurchase2 : amountToPurchase3} energy from Seller {currentSeller} for a total price of {currentSeller === 1 ? amountToPurchase1 * sellers[0].price : currentSeller === 2 ? amountToPurchase2 * sellers[1].price : amountToPurchase3 * sellers[2].price}? */}
                   </p>
                 </div>
               
@@ -721,13 +697,7 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
                     onClick={() => {
                       if (currentButton === 'Set_Threshold') {
                         callCounterApplication('Set_Threshold', parseInt(userEnergyThresholdTemporary, 10),parseInt(userEnergyTokenCapacity/100, 10));
-                        
-                        // if (userEnergyTokenCount > ((parseInt(userEnergyThresholdTemporary, 10)/100)*userEnergyTokenCapacity)) {
-                        //   callCounterApplication('Upload_Energy', userEnergyTokenCount-(((parseInt(userEnergyThresholdTemporary, 10)/100)*userEnergyTokenCapacity)),parseInt(userEnergyUploadPrice, 10));
-                        // }
-                        
                       } else if (currentButton === 'Upload_Energy') {
-                        // Call for Seller 2
                         callCounterApplication('Upload_Energy', parseInt(userEnergyUploadAmount/100, 10), parseInt(userEnergyUploadPrice, 10));
                       }
                       closeModal();
@@ -743,6 +713,5 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
       </Dialog>
     </Transition>
     </div>
-    
   );
 }
