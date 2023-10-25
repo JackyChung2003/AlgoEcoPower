@@ -2,7 +2,7 @@ import './App.css';
 import {PeraWalletConnect} from '@perawallet/connect';
 import algosdk, { waitForConfirmation } from 'algosdk';
 import { useEffect, useState } from 'react';
-import Navbar from "./components/solarPanel";
+import Navbar from "./components/Navbar";
 import Dashboard from "./components/dashboard";
 import Marketplace from "./components/marketplace";
 import Community from "./components/community";
@@ -61,7 +61,6 @@ export default function App() {
         )}
         
     </div>
-    
   );
 
   function handleConnectWalletClick() {
