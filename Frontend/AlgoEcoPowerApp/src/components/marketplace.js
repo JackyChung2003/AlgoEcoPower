@@ -462,267 +462,197 @@ export default function Marketplace({ accountAddress, optInToApp, isOptIn }) {
                 </Button>
               </div>
             </div>
-              // <div id='seller' className="group relative">
-              //     {/* Seller 4 or user*/}
-              //   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-40">
-              //     {/* Seller 4 or user Image */}
-              //     <img
-              //       src={sellers[3].imageSrc}
-              //       alt={sellers[3].imageAlt}
-              //       className="h-full w-full object-cover object-center lg:h-40 lg:w-full"
-              //     />
-              //   </div>
-              //   <div className="mt-4 flex justify-between">
-              //     <div>
-              //       {/* Seller 4 or user Name */}
-              //       <h3 className="text-sm text-gray-700 text-left">  
-              //           <span aria-hidden="true" className="absolute inset-0" />
-              //           {sellers[3].name}
-              //       </h3>
-              //       {/* Seller 4 or user Energy Uploaded */}
-              //       <p className="mt-1 text-sm text-gray-500">Energy Uploaded: {userEnergyUploadCount}</p>
-              //     </div>
-              //     {/* Seller 4 or user Energy Price */}
-              //     <p className="mt-1 text-sm font-medium text-gray-900">{userEnergyUploadPrice}Energy/ 1Token</p>
-              //   </div>
-              // </div>
             )}
           </div>
         </div>
       </div>
 
-    <Transition appear show={isOpen} as={Fragment}>
-      {currentSeller === 4 ? (
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Power Uploaded Adjustment Center
-                  </Dialog.Title>
-                  
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Edit Price Per Unit:
-                      <input
-                        type="number"
-                        className="border border-gray-300 rounded-md p-1"
-                        value={userEnergyUploadPrice}
-                        onChange={(event) => setUserEnergyUploadPrice(event.target.value)}
+      <Transition appear show={isOpen} as={Fragment}>
+        {currentSeller === 4 ? (
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+  
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg font-medium leading-6 text-gray-900"
+                    >
+                      Power Uploaded Adjustment Center
+                    </Dialog.Title>
+                    
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">
+                        Edit Price Per Unit:
+                        <input
+                          type="number"
+                          className="border border-gray-300 rounded-md p-1"
+                          value={userEnergyUploadPrice}
+                          onChange={(event) => setUserEnergyUploadPrice(event.target.value)}
+                        />
+                      </p>
+                    </div>
+  
+                    {/* Reminder Section */}
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 font">
+                        Reminder: Please review and adjust the price per unit as needed.
+                      </p>
+                    </div>
+  
+                    <div className="SlideBar">
+                    <h1 className='text-center font-semibold w-max mt-3'>Retrieve Energy:</h1>
+                      <RangeSlider
+                        value={userRetrieveEnergyUpload}
+                        onChange={changeEvent => SetUserRetrieveEnergyUpload(changeEvent.target.value)}
+                        max={userEnergyUploadRemainCount}
+                        step={100}
                       />
-                    </p>
-                  </div>
-
-                  {/* Reminder Section */}
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500 font">
-                      Reminder: Please review and adjust the price per unit as needed.
-                    </p>
-                  </div>
-
-                  <div className="SlideBar">
-                  <h1 className='text-center font-semibold w-max mt-3'>Retrieve Energy:</h1>
-                    <RangeSlider
-                      value={userRetrieveEnergyUpload}
-                      onChange={changeEvent => SetUserRetrieveEnergyUpload(changeEvent.target.value)}
-                      max={userEnergyUploadRemainCount}
-                      step={100}
-                    />
-                  </div>
-                            
-                  <div>
-                    <p className="mt-1 text-sm text-gray-500">Amount to retrieve: {userRetrieveEnergyUpload} Energy</p>
-                  </div>
-                            
-                  <div id='purchase_section'>
-                    <Button id = 'Purchase_button' 
-                       onClick={
-                       () => {
-                        callCounterApplication('Retrieve_Energy_Upload', userRetrieveEnergyUpload/100);
-                        }
-                       }>
-                      Retrieve
-                    </Button>
-                  </div>
-
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Or retrieve all energy upload: 
+                    </div>
+                              
+                    <div>
+                      <p className="mt-1 text-sm text-gray-500">Amount to retrieve: {userRetrieveEnergyUpload} Energy</p>
+                    </div>
+                              
+                    <div id='purchase_section'>
                       <Button id = 'Purchase_button' 
-                        onClick={
+                         onClick={
                          () => {
-                          callCounterApplication('Retrieve_Energy_Upload_All');
+                          callCounterApplication('Retrieve_Energy_Upload', userRetrieveEnergyUpload/100);
                           }
                          }>
-                        Retrieve All
+                        Retrieve
                       </Button>
-                    </p>
-                  </div>
-
-                  {/* <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Or retrieve all energy upload: 
+                    </div>
+  
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">
+                        Or retrieve all energy upload: 
+                        <Button id = 'Purchase_button' 
+                          onClick={
+                           () => {
+                            callCounterApplication('Retrieve_Energy_Upload_All');
+                            }
+                           }>
+                          Retrieve All
+                        </Button>
+                      </p>
+                    </div>  
+  
+                    <div className="mt-4 flex justify-between">
                       <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 ml-2 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={callCounterApplication("Retrieve_Energy_Upload_All")}
+                        className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
                       >
-                        Retrieve Energy
+                        Cancel Edit
                       </button>
-                    </p>
-                  </div> */}
-                  
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+                        // onClick={handleRetrieveEnergy}
+                      >
+                        Save Edit
+                      </button>
+                    </div>
 
-                  <div className="mt-4 flex justify-between">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Cancel Edit
-                    </button>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                      // onClick={handleRetrieveEnergy}
-                    >
-                      Save Edit
-                    </button>
-                  </div>
-                  {/* <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                    Do you want to purchase {currentSeller === 1 ? amountToPurchase1 : currentSeller === 2 ? amountToPurchase2 : amountToPurchase3} energy from Seller {currentSeller} for a total price of {currentSeller === 1 ? amountToPurchase1 * sellers[0].price : currentSeller === 2 ? amountToPurchase2 * sellers[1].price : amountToPurchase3 * sellers[2].price}?
-                    </p>
-                  </div>
-
-                  <div className="mt-4 flex justify-between">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                      onClick={() => {
-                        if (currentSeller === 1) {
-                          callCounterApplication('Purchase_Energy_Seller_1', parseInt(amountToPurchase1/100, 10), sellers[0].price);
-                        } else if (currentSeller === 2) {
-                          // Call for Seller 2
-                          callCounterApplication('Purchase_Energy_Seller_2', parseInt(amountToPurchase2/100, 10), sellers[1].price);
-                        } else {
-                          // Call for Seller 3
-                          callCounterApplication('Purchase_Energy_Seller_3', parseInt(amountToPurchase3/100, 10), sellers[2].price);
-                        }
-                        closeModal();
-                      }}
-                    >
-                      Confirm
-                    </button>
-                  </div> */}
-                </Dialog.Panel>
-              </Transition.Child>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
             </div>
-          </div>
-        </Dialog>
-      ) : (
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Payment Confirmation
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                    Do you want to purchase {currentSeller === 1 ? amountToPurchase1 : currentSeller === 2 ? amountToPurchase2 : amountToPurchase3} energy from Seller {currentSeller} for a total price of {currentSeller === 1 ? amountToPurchase1 * sellers[0].price : currentSeller === 2 ? amountToPurchase2 * sellers[1].price : amountToPurchase3 * sellers[2].price}?
-                    </p>
-                  </div>
-
-                  <div className="mt-4 flex justify-between">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+          </Dialog>
+        ) : (
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+  
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
-                      onClick={() => {
-                        if (currentSeller === 1) {
-                          callCounterApplication('Purchase_Energy_Seller_1', parseInt(amountToPurchase1/100, 10), sellers[0].price);
-                        } else if (currentSeller === 2) {
-                          // Call for Seller 2
-                          callCounterApplication('Purchase_Energy_Seller_2', parseInt(amountToPurchase2/100, 10), sellers[1].price);
-                        } else {
-                          // Call for Seller 3
-                          callCounterApplication('Purchase_Energy_Seller_3', parseInt(amountToPurchase3/100, 10), sellers[2].price);
-                        }
-                        closeModal();
-                      }}
-                    >
-                      Confirm
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
+                      Payment Confirmation
+                    </Dialog.Title>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">
+                      Do you want to purchase {currentSeller === 1 ? amountToPurchase1 : currentSeller === 2 ? amountToPurchase2 : amountToPurchase3} energy from Seller {currentSeller} for a total price of {currentSeller === 1 ? amountToPurchase1 * sellers[0].price : currentSeller === 2 ? amountToPurchase2 * sellers[1].price : amountToPurchase3 * sellers[2].price}?
+                      </p>
+                    </div>
+  
+                    <div className="mt-4 flex justify-between">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+                        onClick={() => {
+                          if (currentSeller === 1) {
+                            callCounterApplication('Purchase_Energy_Seller_1', parseInt(amountToPurchase1/100, 10), sellers[0].price);
+                          } else if (currentSeller === 2) {
+                            // Call for Seller 2
+                            callCounterApplication('Purchase_Energy_Seller_2', parseInt(amountToPurchase2/100, 10), sellers[1].price);
+                          } else {
+                            // Call for Seller 3
+                            callCounterApplication('Purchase_Energy_Seller_3', parseInt(amountToPurchase3/100, 10), sellers[2].price);
+                          }
+                          closeModal();
+                        }}
+                      >
+                        Confirm
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
             </div>
-          </div>
-        </Dialog>
-      )}
-    </Transition>
-  </div>
+          </Dialog>
+        )}
+      </Transition>
+    </div>
   );
 }
