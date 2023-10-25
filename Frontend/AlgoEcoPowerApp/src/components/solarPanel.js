@@ -18,10 +18,6 @@ export default function SolarPanel({ accountAddress, optInToApp, isOptIn }) {
   
   const [userEnergyPurchaseCount, setUserEnergyPurchaseCount] = useState(null);
   const [userEnergyUploadPrice, setUserEnergyUploadPrice] = useState(0);
-  // const [isFooterVisible, setFooterVisible] = useState(false);
-  const [enabled, setEnabled] = useState(false)
-  const [amountToBeModify, setAmountToBeModify] = useState(0); // State for slide bar 1
-  const [price, setPrice] = useState(null) // State for price input
   let [isOpen, setIsOpen] = useState(false)
   const [currentButton, setCurrentButton] = useState(null); // State for current seller
   const [userEnergyThreshold, setUserEnergyThreshold] = useState(null);
@@ -99,16 +95,6 @@ export default function SolarPanel({ accountAddress, optInToApp, isOptIn }) {
         }
       }
   
-      // // Set user energy counts
-      // setUserEnergyUploadCount(userEnergyUploadCount);
-      // // setUserEnergyUploadCount(counter.params["global-state"].length);
-      // setUserEnergyPurchaseCount(userEnergyPurchaseCount);
-  
-      // // Set seller energy upload counts
-      // setSeller1EnergyUploadCount(seller1EnergyUploadCount);
-      // setSeller2EnergyUploadCount(seller2EnergyUploadCount);
-      // setSeller3EnergyUploadCount(seller3EnergyUploadCount);
-  
     } catch (e) {
       console.error('There was an error connecting to the Algorand node: ', e);
     }
@@ -144,41 +130,6 @@ export default function SolarPanel({ accountAddress, optInToApp, isOptIn }) {
       console.error(`There was an error calling the counter app: ${e}`);
     }
   }
-
-  // async function callCounterApplication(action, amount) {
-  //   try {
-  //     // get suggested params
-  //     const suggestedParams = await algod.getTransactionParams().do();
-  //     const appArgs = [
-  //       new Uint8Array(Buffer.from(action)),   // Pass the action as an argument 0
-  //       new Uint8Array(Int32Array.of(amount)), // Pass the amount as an argument 1
-  //     ];
-  
-  //     const actionTx = algosdk.makeApplicationNoOpTxn(
-  //       accountAddress,
-  //       suggestedParams,
-  //       appIndex,
-  //       appArgs
-  //     );
-  
-  //     const actionTxGroup = [{ txn: actionTx, signers: [accountAddress] }];
-  
-  //     const signedTx = await peraWallet.signTransaction([actionTxGroup]);
-  //     console.log(signedTx);
-  //     const { txId } = await algod.sendRawTransaction(signedTx).do();
-  //     const result = await waitForConfirmation(algod, txId, 2);
-  
-  //     checkUserTokenEnergyCounts();
-  //     checkGlobalCount();
-  //   } catch (e) {
-  //     console.error(`There was an error calling the counter app: ${e}`);
-  //   }
-  // }
-  
-
-  // const toggleFooter = () => {
-  //   setFooterVisible(!isFooterVisible);
-  // };
 
   async function closeModal() {
     setIsOpen(false)
