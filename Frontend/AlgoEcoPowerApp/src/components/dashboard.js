@@ -1,4 +1,3 @@
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState, Fragment} from 'react';
 import algosdk, { waitForConfirmation } from 'algosdk';
