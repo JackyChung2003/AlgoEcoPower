@@ -1,4 +1,3 @@
-import { Component } from "react";
 import "./NavbarStyle.css"
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
@@ -26,14 +25,6 @@ function Navbar({isConnectedToPeraWallet, handleConnectWalletClick, handleDiscon
                     <li>
                       <Link to="/community">Community</Link>
                     </li>
-                    {/* <li>
-                      <Link to="/aboutUs">About Us</Link>
-                    </li> */}
-                    {/* <li><a href="/components/dashboard">Dashboard</a></li>
-                    <li><a href="/dashboard">Market Place</a></li>
-                    <li><a href="index.html">Solar Panel</a></li>
-                    <li><a href="index.html">Community</a></li>
-                    <li><a href="index.html">Setting</a></li> */}
                 </ul>
             </div>
             {/* Connect to Pera Wallet button */} 
