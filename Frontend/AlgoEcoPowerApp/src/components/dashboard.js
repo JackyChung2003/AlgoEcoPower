@@ -69,7 +69,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
   // const [isFooterVisible, setFooterVisible] = useState(false);
   const [enabled, setEnabled] = useState(false)
   const [amountToBeModify, setAmountToBeModify] = useState(0); // State for slide bar 1
-  const [price, setPrice] = useState(null) // State for price input
   let [isOpen, setIsOpen] = useState(false)
   const [currentButton, setCurrentButton] = useState(null); // State for current seller
   const [userEnergyThreshold, setUserEnergyThreshold] = useState(null);
@@ -146,18 +145,7 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
         else if(counter.params["global-state"][i].key === btoa("energy_upload_sold")){
           setUserEnergyUploadSoldCount(counter.params["global-state"][i].value.uint)
         }
-      }
-  
-      // // Set user energy counts
-      // setUserEnergyUploadCount(userEnergyUploadCount);
-      // // setUserEnergyUploadCount(counter.params["global-state"].length);
-      // setUserEnergyPurchaseCount(userEnergyPurchaseCount);
-  
-      // // Set seller energy upload counts
-      // setSeller1EnergyUploadCount(seller1EnergyUploadCount);
-      // setSeller2EnergyUploadCount(seller2EnergyUploadCount);
-      // setSeller3EnergyUploadCount(seller3EnergyUploadCount);
-  
+      }  
     } catch (e) {
       console.error('There was an error connecting to the Algorand node: ', e);
     }
@@ -194,41 +182,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
     }
   }
 
-  // async function callCounterApplication(action, amount) {
-  //   try {
-  //     // get suggested params
-  //     const suggestedParams = await algod.getTransactionParams().do();
-  //     const appArgs = [
-  //       new Uint8Array(Buffer.from(action)),   // Pass the action as an argument 0
-  //       new Uint8Array(Int32Array.of(amount)), // Pass the amount as an argument 1
-  //     ];
-  
-  //     const actionTx = algosdk.makeApplicationNoOpTxn(
-  //       accountAddress,
-  //       suggestedParams,
-  //       appIndex,
-  //       appArgs
-  //     );
-  
-  //     const actionTxGroup = [{ txn: actionTx, signers: [accountAddress] }];
-  
-  //     const signedTx = await peraWallet.signTransaction([actionTxGroup]);
-  //     console.log(signedTx);
-  //     const { txId } = await algod.sendRawTransaction(signedTx).do();
-  //     const result = await waitForConfirmation(algod, txId, 2);
-  
-  //     checkUserTokenEnergyCounts();
-  //     checkGlobalCount();
-  //   } catch (e) {
-  //     console.error(`There was an error calling the counter app: ${e}`);
-  //   }
-  // }
-  
-
-  // const toggleFooter = () => {
-  //   setFooterVisible(!isFooterVisible);
-  // };
-
   async function closeModal() {
     setIsOpen(false)
   }
@@ -258,8 +211,8 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
       <h1 id='Heading'>Welcome back, User {accountAddress}</h1>
 
       {/* Opt in to App notification */}
-      {/* {isOptIn ? (
-        <div id='page_success'>Opt in successful, thank you for opting in.</div>
+      {isOptIn ? (
+        <div id='page_success'>Opt in successful, thank you for opting in.</div>        // not able to show this currently
       ) : (
         <div id='page_ready'>
           <h1 className='inline text-xl mr-4'>Opt-in to get more information.</h1>
@@ -267,7 +220,7 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
             Opt-in
           </button>
         </div>
-      )} */}
+      )}
 
       <div >
         <Row id='coin-row-section' className="rounded-full shadow m-4" >
@@ -296,15 +249,8 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
               <h1 id='coin-name'>Purchased Energy: {userEnergyPurchaseCount}W</h1>
             </div>
           </Col>
-          {/* <Col id="button-section">
-            <div className="d-flex align-items-center">
-              <h1 id="coin-name">Reload</h1>
-              <button onClick={handleReload}>Reload</button>
-            </div>
-          </Col>  */}
           <Col id="coin-section">
           <div className="d-flex align-items-center">
-              {/* <button onClick={handleReload}>Reload</button>  */}
               <button onClick={setEnabled} id="reload-button">Top Up</button>
           </div>
             <Switch.Group>
@@ -326,25 +272,6 @@ export default function Dashboard({ accountAddress, optInToApp, isOptIn }) {
           </Col> 
         </Row>
       </div>
-
-      {/* <div class='performance'>
-        <div class='left'>
-          <h2>Solar Energy Charge</h2>
-          <div class='solar-charge'>
-            <img id='battery' src='https://github.com/jc2003-2003/AlgoEcoPower/blob/main/images/battery.gif?raw=true' alt='Energy_upload' />
-            <div id='middle-pic'>75%</div>
-          </div>
-        </div>
-        <div class='right'>
-          <h2>Performance Over Weeks (per week)</h2>
-          <div class='performance-chart'></div>
-          <img
-            id='battery'
-            src='https://www.researchgate.net/profile/Abu-Bakar-Khan/publication/340226677/figure/fig3/AS:873663482048514@1585309014359/Monthly-Bar-Chart-of-Monthly-energy-Production-kWh-of-different-Power-modules.png'
-            alt='Energy_upload'
-          />
-        </div>
-      </div> */}
 
       <div className="dashboard">
         <div className="upper-section">
