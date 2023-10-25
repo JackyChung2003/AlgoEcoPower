@@ -5,16 +5,12 @@ import "./dashboardStyle.css"
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/Col';
 import {PeraWalletConnect} from '@perawallet/connect';
-import setAccountAddress from './Navbar';
-import Toggle from 'react-toggle'
 import { Switch } from '@headlessui/react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import SplitButton from 'react-bootstrap/SplitButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import RangeSlider from 'react-bootstrap-range-slider';
 import { Dialog, Transition } from '@headlessui/react'
-import Carousel from 'react-bootstrap/Carousel';
 
 
 
