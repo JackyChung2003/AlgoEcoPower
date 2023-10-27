@@ -78,7 +78,7 @@ If you want to deploy this smart contract on the Algorand Testnet, follow these 
        target: /data
    ```
 
-5. Open the Docker Desktop, then bring up the sandbox in Testnet so that we can deploy to the test network.
+5. Open the Docker Desktop, then bring up the sandbox in Testnet using the linux system so that we can deploy to the test network.
 
 ```bash
 ./sandbox up testnet -v
