@@ -2,6 +2,16 @@
 
 This is the AlgoEcoPower smart contract repository. AlgoEcoPower is a decentralized platform that revolutionizes peer-to-peer (P2P) and consumer-to-consumer (C2C) interaction, enabling seamless buying, selling, and trading of energy. This smart contract plays a crucial role in facilitating these energy transactions on the Algorand blockchain.
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Smart Contract Details](#smart-contract-details)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Security and Validation](#security-and-validation)
+- [License](#license)
+- [Contact](#contact)
+
 ## Overview
 This repository contains a PyTeal-based smart contract designed for the Algorand blockchain. 
 The purpose of this smart contract is to address a pressing challenge in the energy industry. 
@@ -20,24 +30,29 @@ If you want to deploy this smart contract on the Algorand Testnet, follow these 
 
 1. Set up your Algorand development environment with the Pre-requisites inside the [Pyteal-course Lab 1](https://github.com/Algo-Hub-io/pyteal-course/tree/main/Lab1).
 
-2. We need to clone the sandbox from git
+2. Clone the sandbox repository:
 
-```bash
-git clone https://github.com/algorand/sandbox.git
-```
+   ```bash
+   git clone https://github.com/algorand/sandbox.git
+   ```
 
-3. Redirect the directory to the sandbox folder.
+3. Redirect to the sandbox directory:
+   ```bash
+      cd /sandbox
+   ```
 
-```bash
-   cd /sandbox
-```
+4. Update the `docker-compose.yml` file to enable access to your local machine's files from within the Docker container.
 
-4. Update the sandbox file `docker-compose.yml` to allow us to access our files on our local machine from within the docker container.
+   4.1. Open the `docker-compose.yml` file by running `code .` in your terminal. Add the following configuration at the end of the `algod` service:
 
-  4.1. To do this, using `code .` open `docker-compose.yml` and add the following to the end of the algod service.
-
-Existing Algod service;
-```
+   ```yaml
+   volumes:
+      - type: bind
+        source: ../Backend
+        target: /data
+   ```
+   Existing Algod service;
+   ```
   algod:
     container_name: "algorand-sandbox-algod"
     build:
