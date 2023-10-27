@@ -121,6 +121,3 @@ cd /data
 
 10. Once deployed, you can find the relevant app index on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/) to view detail of the smartcontract.
 
-## License
-
-Specify the license under which your smart contract is released. You can choose from various open-source licenses, such as MIT, Apache, or others.
