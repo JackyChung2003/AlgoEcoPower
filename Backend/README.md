@@ -12,15 +12,7 @@ Our smart contract plays a pivotal role in facilitating these energy transaction
 
 ## Smart Contract Details
 
-It is deployed on the Algorand Testnet and has a relevant app index which can be found on any Algorand Network Explorer, such as AlgoExplorer.
-
-### Approval Program
-
-The approval program is a fundamental part of the smart contract. It defines the rules and conditions under which transactions can be approved. It utilizes global and local state variables to store, check, and update data as required by the contract's functionality. This program is written in PyTeal.
-
-### Clear State Program
-
-The clear state program defines how the smart contract's state should be cleared. It is also written in PyTeal and works in conjunction with the approval program to manage the state of the contract.
+The smart contract is already deployed on the Algorand Testnet and can be found using app index `446975699` on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/).
 
 ## Deployment
 
