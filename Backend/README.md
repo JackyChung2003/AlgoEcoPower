@@ -85,50 +85,42 @@ If you want to deploy this smart contract on the Algorand Testnet, follow these 
 5. Open the Docker Desktop, then bring up the sandbox in Testnet so that we can deploy to the test network.
 
 ```bash
-   ./sandbox up testnet -v
+./sandbox up testnet -v
 ```
 
 6. enter the aglod container and move into the directory that we have bound to our computer.
 
 ```bash
-   ./sandbox enter algod
-   cd /data
+./sandbox enter algod
+cd /data
 ```
 
-5. If you are new to sandbox, please follow the steps in the [Sandbox Deployment](https://github.com/Algo-Hub-io/pyteal-course/blob/main/Lab2/sandboxDeploy.md).
-   5.1 But if you already have deploy this smart contract already, continue with this
+7. If you are new to sandbox, please follow the steps in the [Sandbox Deployment](https://github.com/Algo-Hub-io/pyteal-course/blob/main/Lab2/sandboxDeploy.md).
 
-```bash
-  goal account list
-```
+   7.1 But if you already have deploy this smart contract already, continue with this
 
-5.2 Save your address in an environment variable using the format `export ONE=<YOUR ADDRESS>`. Example is `export   ONE=ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY`
+   ```bash
+   goal account list
+   ```
 
-```bash
-  export ONE=
-```
+   7.2 Save your address in an environment variable using the format `export ONE=<YOUR ADDRESS>`. Example is `export ONE=ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY`
 
-_you can check your `ONE` variable by using command of `echo $ONE`_ 6. Deploy our newly compiled smart contract to the Testnet.
+   ```bash
+   export ONE=
+   ```
+
+   _you can check your `ONE` variable by using command of `echo $ONE`_
+   
+8. Deploy our newly compiled smart contract to the Testnet.
 
 ```bash
   goal app create --creator $ONE --approval-prog approval.teal --clear-prog clear.teal --global-ints 8 --global-byteslices 0 --local-ints 4    --local-byteslices 0
 ```
 
-7. We can see the app id returned after the app has been deployed.
-8. Once deployed, you can find the relevant app index on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/) to view detail of the smartcontract.
+9. We can see the app id returned after the app has been deployed.
 
-## Usage
-
-Provide instructions on how users or developers can interact with your smart contract. Include details on the functions available, how to call them, and what kind of data they can read and write to the smart contract's global and local states.
-
-## Security and Validation
-
-Explain the security measures and proper validation checks you've implemented to ensure the robustness and security of your smart contract. Highlight any potential vulnerabilities and how they have been mitigated.
+10. Once deployed, you can find the relevant app index on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/) to view detail of the smartcontract.
 
 ## License
 
 Specify the license under which your smart contract is released. You can choose from various open-source licenses, such as MIT, Apache, or others.
-
-## Contact
-
-Provide contact information or links to your social media profiles or email address in case users or developers have questions or need assistance with your smart contract.
