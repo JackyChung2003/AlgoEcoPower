@@ -92,17 +92,17 @@ volumes:
 ```bash
   export ONE=
 ```
-  5.1 But if you already have deploy this smart contract already, continue with this
+*you can check your `ONE` variable by using command of `echo $ONE`*
+   
+6. Deploy our newly compiled smart contract to the Testnet.
+
 ```bash
-  goal account list
+  goal app create --creator $ONE --approval-prog approval.teal --clear-prog clear.teal --global-ints 8 --global-byteslices 0 --local-ints 4 --local-byteslices 0
 ```
 
-   
-3. Compile the PyTeal scripts into Algorand smart contracts using the Algorand SDK. You can refer to Algorand's official documentation for more details.
+7. We can see the app id returned after the app has been deployed.
 
-4. Deploy the smart contract to the Algorand Testnet using your Algorand SDK and account credentials.
-
-5. Once deployed, you can find the relevant app index on Algorand Network Explorer (e.g., AlgoExplorer) to interact with the contract.
+8. Once deployed, you can find the relevant app index on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/) to view detail of the smart contract.
 
 ## Usage
 
