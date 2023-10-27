@@ -77,48 +77,45 @@ If you want to deploy this smart contract on the Algorand Testnet, follow these 
 
    ```yaml
    volumes:
-         - type: bind
-           source: ../Backend
-           target: /data
+     - type: bind
+       source: ../Backend
+       target: /data
    ```
 
-   5. Open the Docker Desktop, then bring up the sandbox in Testnet so that we can deploy to the test network.
+5. Open the Docker Desktop, then bring up the sandbox in Testnet so that we can deploy to the test network.
 
-   ```bash
-      ./sandbox up testnet -v
-   ```
+```bash
+   ./sandbox up testnet -v
+```
 
-   6. enter the aglod container and move into the directory that we have bound to our computer.
+6. enter the aglod container and move into the directory that we have bound to our computer.
 
-   ```bash
-      ./sandbox enter algod
-      cd /data
-   ```
+```bash
+   ./sandbox enter algod
+   cd /data
+```
 
-   5. If you are new to sandbox, please follow the steps in the [Sandbox Deployment](https://github.com/Algo-Hub-io/pyteal-course/blob/main/Lab2/ sandboxDeploy.md).
-      5.1 But if you already have deploy this smart contract already, continue with this
+5. If you are new to sandbox, please follow the steps in the [Sandbox Deployment](https://github.com/Algo-Hub-io/pyteal-course/blob/main/Lab2/sandboxDeploy.md).
+   5.1 But if you already have deploy this smart contract already, continue with this
 
-   ```bash
-     goal account list
-   ```
+```bash
+  goal account list
+```
 
-   5.2 Save your address in an environment variable using the format `export ONE=<YOUR ADDRESS>`. Example is `export    ONE=ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY`
+5.2 Save your address in an environment variable using the format `export ONE=<YOUR ADDRESS>`. Example is `export   ONE=ZZGQZNLZ33I4RC7MLGPJEIMRRKRMIJJVKT376CZXNAFJP3C5B7NZUB4AXY`
 
-   ```bash
-     export ONE=
-   ```
+```bash
+  export ONE=
+```
 
-   _you can check your `ONE` variable by using command of `echo $ONE`_
+_you can check your `ONE` variable by using command of `echo $ONE`_ 6. Deploy our newly compiled smart contract to the Testnet.
 
-   6. Deploy our newly compiled smart contract to the Testnet.
+```bash
+  goal app create --creator $ONE --approval-prog approval.teal --clear-prog clear.teal --global-ints 8 --global-byteslices 0 --local-ints 4    --local-byteslices 0
+```
 
-   ```bash
-     goal app create --creator $ONE --approval-prog approval.teal --clear-prog clear.teal --global-ints 8 --global-byteslices 0 --local-ints 4    --local-byteslices 0
-   ```
-
-   7. We can see the app id returned after the app has been deployed.
-
-   8. Once deployed, you can find the relevant app index on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/) to view detail of the smart contract.
+7. We can see the app id returned after the app has been deployed.
+8. Once deployed, you can find the relevant app index on [AlgoExplorer Testnet](https://testnet.algoexplorer.io/) to view detail of the smartcontract.
 
 ## Usage
 
