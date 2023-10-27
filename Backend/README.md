@@ -7,10 +7,6 @@ This is the AlgoEcoPower smart contract repository. AlgoEcoPower is a decentrali
 - [Overview](#overview)
 - [Smart Contract Details](#smart-contract-details)
 - [Deployment](#deployment)
-- [Usage](#usage)
-- [Security and Validation](#security-and-validation)
-- [License](#license)
-- [Contact](#contact)
 
 ## Overview
 
