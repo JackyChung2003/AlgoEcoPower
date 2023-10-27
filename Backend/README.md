@@ -40,23 +40,16 @@ If you want to deploy this smart contract on the Algorand Testnet, follow these 
 3. Redirect to the sandbox directory:
 
    ```bash
-      cd /sandbox
+   cd /sandbox
    ```
 
 4. Update the `docker-compose.yml` file to enable access to your local machine's files from within the Docker container.
 
    4.1. Open the `docker-compose.yml` file by running `code .` in your terminal. Add the following configuration at the end of the `algod` service:
 
-   ```yaml
-   volumes:
-     - type: bind
-       source: ../Backend
-       target: /data
-   ```
-
    Existing Algod service;
 
-   ```
+   ```yaml
    algod:
      container_name: "algorand-sandbox-algod"
      build:
@@ -82,7 +75,7 @@ If you want to deploy this smart contract on the Algorand Testnet, follow these 
 
    4.2 add the following after ports section
 
-   ```
+   ```yaml
    volumes:
          - type: bind
            source: ../Backend
