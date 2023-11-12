@@ -23,8 +23,6 @@ This frontend component interacts with a smart contract that powers the backend 
 
 - **Marketplace:** Users can purchase energy from other users in the marketplace. They have the option to edit the price of the energy they upload or retrieve energy from the system back to their solar battery.
 
-Please note that these functionalities are tailored to our energy management system and may vary according to specific project requirements.
-
 
 ## Installation and Usage
 
