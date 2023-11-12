@@ -128,10 +128,10 @@ To run a demo of the Energy Trading on the AlgoEcoPower platform, follow these s
    ```shell
    git clone https://github.com/jc2003-2003/AlgoEcoPower.git
 
-2. Navigate to the `frontend` directory.
+2. Navigate to the `frontend` inside `AlgoEcoPower` project directory.
 
    ```shell
-   cd frontend
+   cd AlgoEcoPower/frontend
    ```
 
 3. Install necessary dependencies.
