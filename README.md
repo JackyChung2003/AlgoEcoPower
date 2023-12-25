@@ -131,7 +131,7 @@ To run a demo of the Energy Trading on the AlgoEcoPower platform, follow these s
 2. Navigate to the `frontend` inside `AlgoEcoPower` project directory.
 
    ```shell
-   cd AlgoEcoPower/frontend
+   cd AlgoEcoPower/frontend/AlgoEcoPowerApp
    ```
 
 3. Install necessary dependencies.
