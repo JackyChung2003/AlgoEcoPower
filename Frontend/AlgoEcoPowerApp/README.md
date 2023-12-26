@@ -30,7 +30,7 @@ This frontend component interacts with a smart contract that powers the backend 
 To run this frontend component locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/jc2003-2003/AlgoEcoPower.git`
-2. Navigate to the project directory: `cd AlgoEcoPower/frontend`
+2. Navigate to the project directory: `cd AlgoEcoPower/frontend/AlgoEcoPowerApp`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 
